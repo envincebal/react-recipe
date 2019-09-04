@@ -2,8 +2,35 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  font-family: "Goudy Bookletter\ 1911", sans-serif; }
 
 html {
   background-color: #69bcd3;
   height: 100%; }
+
+.App {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center; }
+
+.title {
+  margin: 20px 0; }
+
+.controls .input-field {
+  padding: 10px 5px;
+  border-radius: 3px 0 0 3px;
+  border: 1px solid transparent;
+  border-color: #d6d6d6;
+  width: 200px;
+  font-size: 16px;
+  box-shadow: inset 0px 0px 3px 0px #bdbdbd; }
+
+.controls .search-button {
+  padding: 11px;
+  border-radius: 0 3px 3px 0;
+  border: none;
+  background-color: #1fd847;
+  color: #fff;
+  width: 75px;
+  font-size: 16px; }
