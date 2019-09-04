@@ -1,0 +1,17 @@
+// Fonts and variables
+
+@import url("https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911");
+$blue: #69bcd3;
+
+// General app styles
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  background-color: $blue;
+  height: 100%;
+}

@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+html {
+  background-color: #69bcd3;
+  height: 100%; }
