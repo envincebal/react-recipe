@@ -35,7 +35,7 @@ html {
     border-color: #d6d6d6;
     width: 200px;
     font-size: 16px;
-    box-shadow: inset 0px 0px 3px 0px rgba(189,189,189,1);
+    box-shadow: inset 0px 0px 3px 0px #bdbdbd;
   }
 
   .search-button {
@@ -46,5 +46,14 @@ html {
     color: #fff; 
     width: 75px;
     font-size: 16px;
+  }
+}
+
+.checkbox-container{
+  margin: 25px 0 0 0;
+
+  .checkbox {
+    margin: 0 20px 0 5px;
+    font-size: 18px;
   }
 }
