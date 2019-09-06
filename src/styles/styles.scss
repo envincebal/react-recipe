@@ -23,7 +23,7 @@ html {
   text-align: center;
 }
 
-.title{
+.title {
   margin: 20px 0;
 }
 
@@ -43,17 +43,40 @@ html {
     border-radius: 0 3px 3px 0;
     border: none;
     background-color: #1fd847;
-    color: #fff; 
+    color: #fff;
     width: 75px;
     font-size: 16px;
   }
 }
 
-.checkbox-container{
+.checkbox-container {
   margin: 25px 0 0 0;
 
   .checkbox {
     margin: 0 20px 0 5px;
     font-size: 18px;
   }
+}
+
+section {
+  margin: 20px 0 0 0;
+
+  .recipe {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px; 
+
+  .recipe-content{
+    display: flex;
+
+    .recipe-div-1{
+      width: 33.3333%;
+      padding: 10px;
+    }
+    .recipe-div-2{
+      padding: 10px;
+      width: 66.6666%;
+    }
+  }
+}
 }

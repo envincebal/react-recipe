@@ -7,7 +7,6 @@ const Search = props => {
         <input className="input-field" type="text" placeholder="Enter Ingredients" />
         <button className="search-button">Search</button>
       </div>
-
     </form>
   );
 }

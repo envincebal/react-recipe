@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from "./Search";
 import CheckBoxes from "./CheckBoxes";
+import Recipe from "./Recipe";
 import '../styles/styles.css';
 
 class App extends Component {
@@ -16,6 +17,11 @@ class App extends Component {
             <CheckBoxes />
           </div>
         </header>
+        <section>
+          <div className="recipe-container">
+            <Recipe />
+          </div>
+        </section>
       </div>
     );
   }

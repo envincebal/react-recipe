@@ -40,3 +40,18 @@ html {
   .checkbox-container .checkbox {
     margin: 0 20px 0 5px;
     font-size: 18px; }
+
+section {
+  margin: 20px 0 0 0; }
+  section .recipe {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 20px; }
+    section .recipe .recipe-content {
+      display: flex; }
+      section .recipe .recipe-content .recipe-div-1 {
+        width: 33.3333%;
+        padding: 10px; }
+      section .recipe .recipe-content .recipe-div-2 {
+        padding: 10px;
+        width: 66.6666%; }
