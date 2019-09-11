@@ -3,12 +3,14 @@ import Search from "./Search";
 import CheckBoxes from "./CheckBoxes";
 import Recipe from "./Recipe";
 import '../styles/styles.css';
+import api from "../utils/api";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       recipes: [],
+      checkboxes: [],
       ingredient: ""
     }
   }
@@ -17,20 +19,29 @@ class App extends Component {
     this.setState({ ingredient: e.target.value })
   }
 
-  handleRecipes = (search) => {
-    const apiID = `a23e2e90`;
-    const apiKey = `6220bdba80c64c71f7674f546eef3872`;
-    const apiURL = `https://api.edamam.com/search?q=${search}&app_id=${apiID}&app_key=${
-      apiKey}&from=0&to=20`;
-
-    fetch(apiURL)
+  handleRecipes = search => {
+    api.getRecipe(search)
       .then(res => res.json())
       .then(data => {
+        const results = data.hits;
 
-        const hit = data.hits
-        hit.forEach(recipe => {
+        results.forEach(item => {
           this.setState(prevState => ({
-            recipes: prevState.recipes.concat(recipe)
+            recipes: [...prevState.recipes, item]
+          }))
+        });
+      })
+  }
+
+  handleFiltedRecipes = (search, filters) => {
+    api.filteredRecipes(search)
+      .then(res => res.json())
+      .then(data => {
+        const results = data.hits;
+
+        results.forEach(item => {
+          this.setState(prevState => ({
+            recipes: [...prevState.recipes, item]
           }))
         });
       })
@@ -39,6 +50,22 @@ class App extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.handleRecipes(this.state.ingredient);
+  }
+
+  isChecked = () => {
+    const checkboxes = document.getElementsByClassName("checkboxes");
+    const filters = [];
+
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked === true) {
+        filters.push(checkboxes[i].value);
+      }
+
+    }
+    this.setState({
+      checkboxes: filters
+    })
+
   }
 
   render() {
@@ -54,15 +81,18 @@ class App extends Component {
             submit={this.handleSubmit}
           />
           <div className="checkbox-container">
-            <CheckBoxes />
+            <CheckBoxes
+              click={this.isChecked}
+            />
           </div>
         </header>
         <section>
           <div className="recipe-container">
             <Recipe
-            items={this.state.recipes}
-             />
-            {console.log(this.state.recipes)}
+              items={this.state.recipes}
+            />
+
+            {console.log(this.state.checkboxes)}
           </div>
         </section>
       </div>
