@@ -1,9 +1,10 @@
 import React from 'react';
 
 const Recipe = props => {
+  const {items} = props;
   return (
     <div>
-      {props.items.map((item, id) => (
+      {items.map((item, id) => (
         <div key={id} className="recipe">
           <div className="img-container">
             <img className="recipe-img" src={item.recipe.image} alt="" />

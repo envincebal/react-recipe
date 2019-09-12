@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       recipes: [],
       checkboxes: [],
-      ingredient: ""
+      ingredient: "",
+      error: false
     }
   }
 
@@ -19,37 +20,73 @@ class App extends Component {
     this.setState({ ingredient: e.target.value })
   }
 
-  handleRecipes = search => {
-    api.getRecipe(search)
+  handleRecipes = () => {
+    const { ingredient } = this.state;
+
+    api.getRecipe(ingredient)
       .then(res => res.json())
       .then(data => {
         const results = data.hits;
 
-        results.forEach(item => {
-          this.setState(prevState => ({
-            recipes: [...prevState.recipes, item]
-          }))
-        });
+        if (!results.length) {
+          this.setState({
+            error: true
+          })
+
+        } else {
+          this.setState({
+            error: false
+          })
+          results.forEach(item => {
+            this.setState(prevState => ({
+              recipes: [...prevState.recipes, item]
+            }))
+          });
+        }
       })
   }
 
-  handleFiltedRecipes = (search, filters) => {
-    api.filteredRecipes(search)
+  handleFilteredRecipes = () => {
+    const { ingredient, checkboxes } = this.state;
+
+    api.filteredRecipes(ingredient, checkboxes)
       .then(res => res.json())
       .then(data => {
         const results = data.hits;
 
-        results.forEach(item => {
-          this.setState(prevState => ({
-            recipes: [...prevState.recipes, item]
-          }))
-        });
+        if (!results.length) {
+          this.setState({
+            error: true
+          })
+
+        } else {
+          this.setState({
+            error: false
+          })
+          results.forEach(item => {
+            this.setState(prevState => ({
+              recipes: [...prevState.recipes, item]
+            }))
+          });
+        }
+
       })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.handleRecipes(this.state.ingredient);
+    const { checkboxes, ingredient } = this.state;
+
+    if (checkboxes.length) {
+      this.handleFilteredRecipes(ingredient);
+    } else {
+      this.handleRecipes(ingredient);
+    }
+
+
+    this.setState({
+      recipes: []
+    })
   }
 
   isChecked = () => {
@@ -60,15 +97,15 @@ class App extends Component {
       if (checkboxes[i].checked === true) {
         filters.push(checkboxes[i].value);
       }
-
     }
+
     this.setState({
       checkboxes: filters
     })
-
   }
 
   render() {
+    const { error, ingredient, recipes } = this.state;
     return (
       <div className="App">
         <header className="header">
@@ -77,7 +114,7 @@ class App extends Component {
           </h1>
           <Search
             change={this.handleChange}
-            value={this.state.ingredient}
+            value={ingredient}
             submit={this.handleSubmit}
           />
           <div className="checkbox-container">
@@ -88,11 +125,14 @@ class App extends Component {
         </header>
         <section>
           <div className="recipe-container">
+            {error &&
+              <p style={{ color: "red" }}>Unable to find recipe. Please try again.</p>}
+
             <Recipe
-              items={this.state.recipes}
+              items={recipes}
             />
 
-            {console.log(this.state.checkboxes)}
+
           </div>
         </section>
       </div>
