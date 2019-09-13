@@ -3,7 +3,7 @@ import React from 'react';
 const Recipe = props => {
   const {items} = props;
   return (
-    <div>
+    <div className="recipe-container">
       {items.map((item, id) => (
         <div key={id} className="recipe">
           <div className="img-container">
@@ -17,7 +17,7 @@ const Recipe = props => {
               <div className="recipe-info">
                 <h3><i className="fas fa-info-circle"></i> Information</h3>
                 <hr />
-                <p>Cook Time: {item.recipe.totalTime} minutes</p>
+                <p>Cook Time: {!item.recipe.totalTime ? `Unavailable`: item.recipe.totalTime + ` minutes`} </p>
                 <p>Calories: {Math.round(item.recipe.calories)}</p>
                 <p>Servings: {item.recipe.yield}</p>
               </div>

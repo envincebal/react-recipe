@@ -83,7 +83,6 @@ class App extends Component {
       this.handleRecipes(ingredient);
     }
 
-
     this.setState({
       recipes: []
     })
@@ -124,16 +123,11 @@ class App extends Component {
           </div>
         </header>
         <section>
-          <div className="recipe-container">
-            {error &&
-              <p style={{ color: "red" }}>Unable to find recipe. Please try again.</p>}
-
-            <Recipe
-              items={recipes}
-            />
-
-
-          </div>
+          {error &&
+            <p style={{ color: "red" }}>Unable to find recipe. Please try again.</p>}
+          <Recipe
+            items={recipes}
+          />
         </section>
       </div>
     );

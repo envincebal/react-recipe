@@ -17,6 +17,9 @@ html {
   height: 100%;
 }
 
+
+// Component styles
+
 .App {
   max-width: 1024px;
   margin: 0 auto;
@@ -50,35 +53,40 @@ html {
 }
 
 .checkbox-container {
-  margin: 25px 0 0 0;
+  margin: 20px auto;
+  input.checkboxes{
+    margin: 0 5px 0 0;
+  }
 
   .checkbox {
-    margin: 0 20px 0 5px;
-    font-size: 18px;
+    margin: 0 15px 0 0;
+    font-size: 14px;
   }
 }
 
 section {
-  margin: 20px 0 0 0;
+  margin: 20px 30px;
 
   .recipe {
     background-color: #fff;
     border-radius: 5px;
     padding: 10px;
     margin: 20px auto;
-    max-width: 800px;
+    max-width: 1000px;
 
     .img-container {
       margin: 0 auto 10px auto;
       max-width: 170px;
 
-      a{
+      a {
         color: #f37c0c;
         text-decoration: none;
       }
-      a:hover{
+
+      a:hover {
         color: #b4671e;
       }
+
       .recipe-img {
         width: 100%;
       }
@@ -99,6 +107,7 @@ section {
         li {
           text-align: left;
           list-style: none;
+          font-size: 18px;
         }
 
       }
@@ -110,8 +119,28 @@ section {
         li {
           text-align: left;
           margin: 0 0 0 20px;
+          font-size: 18px;
+        }
+      }
+
+    }
+  }
+
+  /*  Media queries */
+
+  @media screen and (max-width: 764px) {
+    .recipe {
+
+      .recipe-content {
+        display: block;
+
+        .recipe-div-1,
+        .recipe-div-2 {
+          width: 100%;
         }
       }
     }
   }
+
+
 }
