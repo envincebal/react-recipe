@@ -28,7 +28,7 @@ class App extends Component {
       .then(data => {
         const results = data.hits;
 
-        if (!results.length) {
+        if (!results) {
           this.setState({
             error: true
           })
@@ -54,7 +54,7 @@ class App extends Component {
       .then(data => {
         const results = data.hits;
 
-        if (!results.length) {
+        if (!results) {
           this.setState({
             error: true
           })
