@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Search from "./Search";
 import CheckBoxes from "./CheckBoxes";
-import Recipe from "./Recipe";
+import RecipeList from "./RecipeList";
 import '../styles/styles.css';
 import api from "../utils/api";
 
@@ -125,9 +125,11 @@ class App extends Component {
         <section>
           {error &&
             <p style={{ color: "red" }}>Unable to find recipe. Please try again.</p>}
-          <Recipe
-            items={recipes}
-          />
+          <div className="recipe-container">
+            <RecipeList
+              recipesList={recipes}
+            />
+          </div>
         </section>
       </div>
     );
