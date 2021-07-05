@@ -1,6 +1,6 @@
 const apiID = `a23e2e90`;
 const apiKey = `6220bdba80c64c71f7674f546eef3872`;
-const proxyUrl = `https://cors-anywhere.herokuapp.com/`;
+const proxyUrl = `https://cors.bridged.cc/`;
 module.exports = {
   getRecipe(searchTerm) {
 
