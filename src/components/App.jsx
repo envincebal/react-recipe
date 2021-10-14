@@ -28,7 +28,7 @@ class App extends Component {
       .then(data => {
         const results = data.hits;
 
-        if (!results) {
+        if (!results.length) {
           this.setState({
             error: true
           })
@@ -44,6 +44,7 @@ class App extends Component {
           });
         }
       })
+
   }
 
   handleFilteredRecipes = () => {
@@ -53,8 +54,8 @@ class App extends Component {
       .then(res => res.json())
       .then(data => {
         const results = data.hits;
-
-        if (!results) {
+      
+        if (!results.length) {
           this.setState({
             error: true
           })
